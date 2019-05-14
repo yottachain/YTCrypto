@@ -1,0 +1,39 @@
+hash: 4677bc944d88c92b4314eb0cdf4346070b28ce4650710d7c4b6463c9515f14e8
+updated: 2019-05-12T11:28:11.762886+08:00
+imports:
+- name: github.com/btcsuite/btcd
+  version: cea5d3c1cc16eb07a1686c557db23004655ae11b
+  subpackages:
+  - btcec
+- name: github.com/btcsuite/fastsha256
+  version: 637e656429416087660c84436a2a035d69d54e2e
+- name: github.com/mr-tron/base58
+  version: d504ab2e22d97cb9f10b1d146a1e6a063f4a5f43
+- name: github.com/stretchr/testify
+  version: ffdc059bfe9ce6a4e144ba849dbedead332c6053
+  subpackages:
+  - assert
+  - require
+- name: golang.org/x/crypto
+  version: cbcb750295291b33242907a04be40e80801d0cfc
+  subpackages:
+  - sha3
+- name: golang.org/x/sys
+  version: fa43e7bc11baaae89f3f902b2b4d832b68234844
+  subpackages:
+  - cpu
+- name: gopkg.in/check.v1
+  version: 788fd78401277ebd861206a03c884797c6ec5541
+testImports:
+- name: github.com/davecgh/go-spew
+  version: d8f796af33cc11cb798c1aaeb27a4ebc5099927d
+  subpackages:
+  - spew
+- name: github.com/kr/pretty
+  version: a0c635c0aede2cb0c2f8bb0f0d70485fbdd11bd4
+- name: github.com/kr/text
+  version: e2ffdb16a802fe2bb95e2e35ff34f0e53aeef34f
+- name: github.com/pmezard/go-difflib
+  version: 5d4384ee4fb2527b0a1256a821ebfc92f91efefc
+  subpackages:
+  - difflib

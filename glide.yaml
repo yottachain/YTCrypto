@@ -1,0 +1,15 @@
+package: github.com/yottachain/YTCrypto
+import:
+- package: github.com/btcsuite/btcd
+  version: BTCD_0_12_0_BETA
+  subpackages: 
+  - btcec
+- package: github.com/stretchr/testify
+  version: v1.3.0
+  subpackages:
+  - require
+- package: github.com/mr-tron/base58
+  version: v1.1.2
+- package: golang.org/x/crypto
+- package: golang.org/x/sys
+- package: gopkg.in/check.v1

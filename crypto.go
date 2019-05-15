@@ -146,9 +146,8 @@ func getRawPublicKey(publicKey string) ([]byte, error) {
 			return nil, errors.New("checksum is not correct")
 		}
 		return rawPubKey[0:33], nil
-	} else {
-		return nil, errors.New("length of public key must be 33 or 37")
 	}
+	return nil, errors.New("length of public key must be 33 or 37")
 }
 
 func getRawPrivateKey(privateKey string) ([]byte, error) {

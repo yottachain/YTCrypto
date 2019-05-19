@@ -28,11 +28,25 @@ func CreateKey() (string, string) {
 	privateKey := base58.Encode(rawPrivKeyBytes)
 
 	pubKey := privKey.PublicKey
-	pubKeyBytes := crypto.CompressPubkey(&pubKey)
+	pubKeyBytes := ecrypto.CompressPubkey(&pubKey)
 	checksum = ripemd160Sum(pubKeyBytes)
 	rawPublicKeyBytes := append(pubKeyBytes, checksum[0:4]...)
 	publicKey := base58.Encode(rawPublicKeyBytes)
 	return privateKey, publicKey
+}
+
+func GetPublicKeyByPrivateKey(privateKey string) (string, error) {
+	pk, err := getRawPrivateKey(privateKey)
+	if err != nil {
+		return "", err
+	}
+	privKey, err := ecrypto.ToECDSA(pk)
+	pubKey := privKey.PublicKey
+	pubKeyBytes := ecrypto.CompressPubkey(&pubKey)
+	checksum := ripemd160Sum(pubKeyBytes)
+	rawPublicKeyBytes := append(pubKeyBytes, checksum[0:4]...)
+	publicKey := base58.Encode(rawPublicKeyBytes)
+	return publicKey, nil
 }
 
 //Sign create signature for data by private key

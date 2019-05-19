@@ -21,6 +21,16 @@ func TestMain(m *testing.M) {
 	os.Exit(m.Run())
 }
 
+func TestGetPublicKeyByPrivateKey(t *testing.T) {
+	pubKey2, err := GetPublicKeyByPrivateKey(privKey)
+	if err != nil {
+		t.Error(err.Error())
+	}
+	if pubKey != pubKey2 {
+		t.Error("Generate public key by private key failed.")
+	}
+}
+
 func TestSignAndVerify(t *testing.T) {
 	sig, err := Sign(privKey, []byte("123456"))
 	if err != nil {

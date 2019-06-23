@@ -39,6 +39,13 @@ func CreateKey() *C.keyret {
 	return createKeyret(privateKey, publicKey)
 }
 
+//export Ecrecover
+func Ecrecover(data *C.char, size C.longlong, signature *C.char) *C.stringwitherror {
+	dataSlice := (*[1 << 30]byte)(unsafe.Pointer(data))[:int64(size):int64(size)]
+	pubkey, err := ytcrypto.Ecrecover(dataSlice, C.GoString(signature))
+	return createStringwitherror(pubkey, err)
+}
+
 //export Sign
 func Sign(privateKey *C.char, data *C.char, size C.longlong) *C.stringwitherror {
 	dataSlice := (*[1 << 30]byte)(unsafe.Pointer(data))[:int64(size):int64(size)]

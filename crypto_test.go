@@ -31,6 +31,21 @@ func TestGetPublicKeyByPrivateKey(t *testing.T) {
 	}
 }
 
+func TestEcrecover(t *testing.T) {
+	sig, err := Sign(privKey, []byte("123456"))
+	if err != nil {
+		t.Error(err.Error())
+	}
+	t.Logf("generate signature for string '%s', signature is %s\n", "123456", sig)
+	pk, err := Ecrecover([]byte("123456"), sig)
+	if err != nil {
+		t.Error(err.Error())
+	}
+	if pk != pubKey {
+		t.Error("verify signature failed")
+	}
+}
+
 func TestSignAndVerify(t *testing.T) {
 	sig, err := Sign(privKey, []byte("123456"))
 	if err != nil {

@@ -49,6 +49,37 @@ func GetPublicKeyByPrivateKey(privateKey string) (string, error) {
 	return publicKey, nil
 }
 
+//recover public key from data and signature
+func Ecrecover(data []byte, signature string) (string, error) {
+	if !strings.HasPrefix(signature, "SIG_K1_") {
+		return "", errors.New("prefix of signature is illegal.")
+	}
+	signature = strings.TrimPrefix(signature, "SIG_K1_")
+	sigbytes, _ := base58.Decode(signature)
+	sign := sigbytes[0:65]
+	checksum := sigbytes[65:]
+	sign1 := append([]byte{}, sign...)
+	ck := ripemd160Sum(append(sign1, 'K', '1'))
+	if !bytes.Equal(checksum, ck[0:4]) {
+		return "", errors.New("checksum of signature is invalid.")
+	}
+	sign[0] -= 4
+	sign[0] -= 27
+	signx := append(sign[1:65], sign[0])
+	recPubkey, err := crypto.Ecrecover(sha256Sum(data), signx)
+	if err != nil {
+		return "", errors.New("recover public key failed.")
+	}
+	recPublicKey, err := ecrypto.UnmarshalPubkey(recPubkey)
+	if err != nil {
+		return "", errors.New("unmarshal public key failed.")
+	}
+	recPublicKeyBytes := ecrypto.CompressPubkey(recPublicKey)
+	checksum = ripemd160Sum(recPublicKeyBytes)
+	rawRecPublicKeyBytes := append(recPublicKeyBytes, checksum[0:4]...)
+	return base58.Encode(rawRecPublicKeyBytes), nil
+}
+
 //Sign create signature for data by private key
 func Sign(privateKey string, data []byte) (string, error) {
 	pk, err := getRawPrivateKey(privateKey)

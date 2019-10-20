@@ -1,36 +1,57 @@
-hash: 4677bc944d88c92b4314eb0cdf4346070b28ce4650710d7c4b6463c9515f14e8
-updated: 2019-05-12T11:28:11.762886+08:00
+hash: 48e55e12ffde2455de2db2a2f14b0d8fc05cbb28f4528f90121f40db7d2d91bf
+updated: 2019-10-20T23:41:05.3470746+08:00
 imports:
 - name: github.com/btcsuite/btcd
-  version: cea5d3c1cc16eb07a1686c557db23004655ae11b
+  version: a41498d578a99c1619037746abd916176ea61052
   subpackages:
   - btcec
-- name: github.com/btcsuite/fastsha256
-  version: 637e656429416087660c84436a2a035d69d54e2e
+- name: github.com/gogo/protobuf
+  version: 5628607bb4c51c3157aacc3a50f0ab707582b805
+  subpackages:
+  - proto
+- name: github.com/libp2p/go-libp2p-core
+  version: 8f222f4b5a872d9af86f74f2ec0982c7356adce6
+  subpackages:
+  - crypto
+  - crypto/pb
+- name: github.com/minio/sha256-simd
+  version: f675151bb5e19dc10d7430bd9d4ef5e7d1b5521f
 - name: github.com/mr-tron/base58
   version: d504ab2e22d97cb9f10b1d146a1e6a063f4a5f43
+  subpackages:
+  - base58
+- name: github.com/spacemonkeygo/openssl
+  version: c2dcc5cca94ac8f7f3f0c20e20050d4cce9d9730
+  subpackages:
+  - utils
+- name: github.com/spacemonkeygo/spacelog
+  version: 2296661a0572a51438413369004fa931c2641923
 - name: github.com/stretchr/testify
   version: ffdc059bfe9ce6a4e144ba849dbedead332c6053
   subpackages:
   - assert
   - require
 - name: golang.org/x/crypto
-  version: cbcb750295291b33242907a04be40e80801d0cfc
+  version: 87dc89f01550277dc22b74ffcf4cd89fa2f40f4c
   subpackages:
+  - ed25519
+  - ed25519/internal/edwards25519
+  - ripemd160
   - sha3
 - name: golang.org/x/sys
-  version: fa43e7bc11baaae89f3f902b2b4d832b68234844
+  version: 9984515f05623565c49553bf594e265840dd3b19
   subpackages:
   - cpu
+  - unix
 - name: gopkg.in/check.v1
-  version: 788fd78401277ebd861206a03c884797c6ec5541
+  version: 41f04d3bba152ddec2103e299fed053415705330
 testImports:
 - name: github.com/davecgh/go-spew
   version: d8f796af33cc11cb798c1aaeb27a4ebc5099927d
   subpackages:
   - spew
 - name: github.com/kr/pretty
-  version: a0c635c0aede2cb0c2f8bb0f0d70485fbdd11bd4
+  version: 71e7e49937503c662b9b636fd6b2c14b1aa818a5
 - name: github.com/kr/text
   version: e2ffdb16a802fe2bb95e2e35ff34f0e53aeef34f
 - name: github.com/pmezard/go-difflib

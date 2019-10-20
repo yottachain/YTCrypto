@@ -11,7 +11,6 @@ import (
 	"golang.org/x/crypto/ripemd160"
 
 	"github.com/mr-tron/base58"
-	"github.com/yottachain/YTCrypto/crypto"
 	ecrypto "github.com/yottachain/YTCrypto/crypto"
 	"github.com/yottachain/YTCrypto/crypto/ecies"
 )
@@ -66,7 +65,7 @@ func Ecrecover(data []byte, signature string) (string, error) {
 	sign[0] -= 4
 	sign[0] -= 27
 	signx := append(sign[1:65], sign[0])
-	recPubkey, err := crypto.Ecrecover(sha256Sum(data), signx)
+	recPubkey, err := ecrypto.Ecrecover(sha256Sum(data), signx)
 	if err != nil {
 		return "", errors.New("recover public key failed.")
 	}
@@ -120,7 +119,7 @@ func Verify(publicKey string, data []byte, signature string) bool {
 	sign[0] -= 4
 	sign[0] -= 27
 	signx := append(sign[1:65], sign[0])
-	recPubkey, err := crypto.Ecrecover(sha256Sum(data), signx)
+	recPubkey, err := ecrypto.Ecrecover(sha256Sum(data), signx)
 	if err != nil {
 		return false
 	}

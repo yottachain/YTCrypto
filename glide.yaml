@@ -1,7 +1,7 @@
 package: github.com/yottachain/YTCrypto
 import:
 - package: github.com/btcsuite/btcd
-  version: BTCD_0_12_0_BETA
+  version: master
   subpackages: 
   - btcec
 - package: github.com/stretchr/testify
@@ -13,3 +13,5 @@ import:
 - package: golang.org/x/crypto
 - package: golang.org/x/sys
 - package: gopkg.in/check.v1
+- package: github.com/libp2p/go-libp2p-core
+  version: v0.0.3
